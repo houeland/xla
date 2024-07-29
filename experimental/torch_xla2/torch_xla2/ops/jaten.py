@@ -2269,3 +2269,8 @@ def _aten_i0(self):
   if self.dtype in [jnp.int8, jnp.int16, jnp.int32, jnp.int64]:
     self = self.astype(jnp.float32)
   return jax.scipy.special.i0(self)
+
+
+@op(torch.ops.aten.new_empty_strided)
+def _new_empty_strided(self, size, stride, **kwargs):
+  return jnp.empty(size)
