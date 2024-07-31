@@ -155,6 +155,9 @@ class PjRtComputationClient : public ComputationClient {
 
   const PJRT_Api* GetPjRtCApiIfAvailable() const;
 
+  void OnReadyCallback(DataPtr data,
+                       const std::function<void()>& callback) override;
+
  private:
   std::unique_ptr<xla::PjRtClient> client_;
   std::unique_ptr<XlaCoordinator> coordinator_;
